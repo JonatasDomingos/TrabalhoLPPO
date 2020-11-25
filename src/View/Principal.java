@@ -38,7 +38,7 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/encircled-branches-and-book.png"))); // NOI18N
         desktopPane.add(jLabel2);
-        jLabel2.setBounds(60, 10, 520, 420);
+        jLabel2.setBounds(80, 10, 520, 420);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
