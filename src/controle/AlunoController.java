@@ -11,9 +11,11 @@ import dominio.Aluno;
 import dominio.Turma;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
+import util.ValidacaoException;
 
 /**
  *
@@ -71,7 +73,8 @@ public class AlunoController {
 
     }
 
-    public void salvar() {
+    public void salvar() throws ValidacaoException, RemoteException{
+        alunoDigitado.validar();
         Turma turmaCorrigida = new Turma();
         String idTurma = this.alunoDigitado.getTurma().toString().split("-")[0].trim();
         turmaCorrigida.setId(Long.parseLong(idTurma));

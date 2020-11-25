@@ -6,7 +6,11 @@
 package View;
 
 import controle.AlunoController;
+import java.rmi.RemoteException;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import jdk.nashorn.internal.parser.TokenType;
+import util.ValidacaoException;
 
 /**
  *
@@ -246,8 +250,16 @@ public class T_Aluno extends javax.swing.JInternalFrame {
 
     private void btMatricularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btMatricularActionPerformed
         // TODO add your handling code here:
-        alunoController.salvar();
-        JOptionPane.showMessageDialog(null, "Aluno Matriculado com Sucesso");
+        try {
+            alunoController.salvar();
+            JOptionPane.showMessageDialog(null, "Aluno Matriculado com Sucesso");
+            
+        } catch (ValidacaoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(),"Falha na Validação",JOptionPane.WARNING_MESSAGE);
+        } catch(RemoteException e){
+            JOptionPane.showMessageDialog(this, "Erro"+e.getMessage(),"Falha na Validação",JOptionPane.WARNING_MESSAGE);
+        }
+        
 
     }//GEN-LAST:event_btMatricularActionPerformed
 

@@ -6,7 +6,9 @@
 package View;
 
 import controle.TurmaController;
+import java.rmi.RemoteException;
 import javax.swing.JOptionPane;
+import util.ValidacaoException;
 
 /**
  *
@@ -205,9 +207,16 @@ public class T_Turma extends javax.swing.JInternalFrame {
 
     private void btCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCadastrarActionPerformed
         // TODO add your handling code here:
-        turmaController.salvar();
-        JOptionPane.showMessageDialog(null, "Turma Matriculada com Sucesso");
         
+        try {
+            turmaController.salvar();
+            JOptionPane.showMessageDialog(null, "Turma Matriculada com Sucesso");
+            
+        } catch (ValidacaoException e) {
+            JOptionPane.showMessageDialog(this, e.getMessage(),"Falha na Validação",JOptionPane.WARNING_MESSAGE);
+        } catch(RemoteException e){
+            JOptionPane.showMessageDialog(this, "Erro"+e.getMessage(),"Falha na Validação",JOptionPane.WARNING_MESSAGE);
+        }
     }//GEN-LAST:event_btCadastrarActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed

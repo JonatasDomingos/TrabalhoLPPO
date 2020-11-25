@@ -17,6 +17,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import util.ValidacaoException;
 
 /**
  *
@@ -108,7 +109,17 @@ public class Turma implements Serializable {
         return id + " - " + nome;
 
     }
-
+    
+    public void validar() throws ValidacaoException{
+        if(this.nome == null || this.nome.equals(""))
+            throw new ValidacaoException("Nome precisa ser Informado");
+        if(this.ensino == null || this.ensino.equals(""))
+            throw new ValidacaoException("Grau de escolaridade precisa ser Informado");
+        if(this.ano == null || this.ano.equals(""))
+            throw new ValidacaoException("Idade da turma precisa ser Informada");
+        
+        
+        } 
     
     
     

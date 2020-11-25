@@ -9,9 +9,11 @@ import dao.TurmaDao;
 import dominio.Turma;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.rmi.RemoteException;
 import java.util.ArrayList;
 import java.util.List;
 import org.jdesktop.observablecollections.ObservableCollections;
+import util.ValidacaoException;
 
 /**
  *
@@ -68,7 +70,8 @@ public class TurmaController {
 
     }
 
-    public void salvar() {
+    public void salvar()  throws ValidacaoException, RemoteException {
+        turmaDigitado.validar();
         turmaDao.salvarTurma(turmaDigitado);
         novo();
         pesquisar();
