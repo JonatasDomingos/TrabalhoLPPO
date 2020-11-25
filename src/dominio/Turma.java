@@ -116,7 +116,9 @@ public class Turma implements Serializable {
         if(this.ensino == null || this.ensino.equals(""))
             throw new ValidacaoException("Grau de escolaridade precisa ser Informado");
         if(this.ano == null || this.ano.equals(""))
-            throw new ValidacaoException("Idade da turma precisa ser Informada");
+            throw new ValidacaoException("Ano da turma precisa ser Informada");
+        if(this.totalAlunos == null || this.totalAlunos.equals(""))
+            throw new ValidacaoException("Número de vagas precisa ser Informada");
         
         
         } 

@@ -62,18 +62,17 @@ public class AlunoController {
         alunoDao = new AlunoDao();
         alunoTabela = ObservableCollections.observableList(new ArrayList<Aluno>());
         novo();
-        pesquisar();
+        pesquisar(null);
 
     }
 
-    public void pesquisar() {
+    public void pesquisar(String idFiltro) {
         alunoTabela.clear();
-        System.out.println(alunoDigitado.getId());
-        alunoTabela.addAll(alunoDao.pesquisar(alunoDigitado));
+        alunoTabela.addAll(alunoDao.pesquisar(idFiltro));
 
     }
 
-    public void salvar() throws ValidacaoException, RemoteException{
+    public void salvar() throws ValidacaoException, RemoteException {
         alunoDigitado.validar();
         Turma turmaCorrigida = new Turma();
         String idTurma = this.alunoDigitado.getTurma().toString().split("-")[0].trim();
@@ -81,7 +80,7 @@ public class AlunoController {
         alunoDigitado.setTurma(turmaCorrigida);
         alunoDao.salvarAtualizar(alunoDigitado);
         novo();
-        pesquisar();
+        pesquisar(null);
     }
 
     public final void novo() {
@@ -94,7 +93,7 @@ public class AlunoController {
     public void excluir() {
         alunoDao.RemoverAtualizar(alunoSelecionado);
         novo();
-        pesquisar();
+        pesquisar(null);
     }
 
     public void addPropertyChangeListener(PropertyChangeSupport e) {

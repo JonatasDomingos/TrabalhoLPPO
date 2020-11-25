@@ -5,6 +5,8 @@
  */
 package View;
 
+import javax.swing.SwingConstants;
+
 /**
  *
  * @author laura
@@ -15,7 +17,10 @@ public class Principal extends javax.swing.JFrame {
      * Creates new form NewMDIApplication
      */
     public Principal() {
+        this.setExtendedState(MAXIMIZED_BOTH);
         initComponents();
+        logo.setHorizontalAlignment(SwingConstants.CENTER);
+        logo.setVerticalAlignment(SwingConstants.CENTER);
     }
 
     /**
@@ -28,21 +33,23 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         desktopPane = new javax.swing.JDesktopPane();
-        jLabel2 = new javax.swing.JLabel();
+        logo = new javax.swing.JLabel();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         AlunoMenuItem = new javax.swing.JMenuItem();
         TurmaMenuItem = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(MAXIMIZED_BOTH);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/encircled-branches-and-book.png"))); // NOI18N
-        desktopPane.add(jLabel2);
-        jLabel2.setBounds(80, 10, 520, 420);
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/View/encircled-branches-and-book.png"))); // NOI18N
+        desktopPane.add(logo);
+        logo.setBounds(80, 10, 500, 450);
 
         fileMenu.setMnemonic('f');
         fileMenu.setText("Menu");
 
+        AlunoMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.ALT_MASK));
         AlunoMenuItem.setMnemonic('a');
         AlunoMenuItem.setText("Aluno");
         AlunoMenuItem.setToolTipText("Aluno");
@@ -53,6 +60,7 @@ public class Principal extends javax.swing.JFrame {
         });
         fileMenu.add(AlunoMenuItem);
 
+        TurmaMenuItem.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_MASK));
         TurmaMenuItem.setMnemonic('x');
         TurmaMenuItem.setText("Turma");
         TurmaMenuItem.addActionListener(new java.awt.event.ActionListener() {
@@ -70,15 +78,11 @@ public class Principal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 646, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 704, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 448, Short.MAX_VALUE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 459, Short.MAX_VALUE)
         );
 
         pack();
@@ -137,7 +141,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem TurmaMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel logo;
     private javax.swing.JMenuBar menuBar;
     // End of variables declaration//GEN-END:variables
 

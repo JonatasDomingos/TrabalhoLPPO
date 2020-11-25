@@ -12,7 +12,7 @@ public abstract class Aluno_ {
 	public static volatile SingularAttribute<Aluno, String> nascimento;
 	public static volatile SingularAttribute<Aluno, String> nome;
 	public static volatile SingularAttribute<Aluno, Long> id;
-	public static volatile SingularAttribute<Aluno, String> turma;
+	public static volatile SingularAttribute<Aluno, Turma> turma;
 
 }
 

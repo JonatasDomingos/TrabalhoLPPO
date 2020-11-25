@@ -36,47 +36,21 @@ public class AlunoDao {
         em.close();
     }
 
-    public List<Aluno> pesquisar(Aluno aluno) {
+    public List<Aluno> pesquisar(String idFiltro) {
         EntityManager em = Conexao.getEntityManager();
 
-        StringBuilder sql = new StringBuilder("from Aluno a" + " where 1=1");
+        StringBuilder sql = new StringBuilder("from Aluno a where 1=1");
 
-        if (aluno != null) {
-            if (aluno.getId() != null) {
-                sql.append("and a.id = :id");
-            }
-            if (aluno.getNome() != null && !aluno.getNome().equals("")) {
-                sql.append("and a.nome like :Aluno_Nome");
-            }
-            if (aluno.getNascimento() != null && !aluno.getNascimento().equals("")) {
-                sql.append("and a.nascimento like :Aluno_Nascimento");
-            }
-            if (aluno.getPcd() != null && !aluno.getPcd().equals("")) {
-                sql.append("and a.pcd like :Deficiencia");
-            }
-            if (aluno.getTurma() != null && !aluno.getTurma().equals("")) {
-                sql.append("and a.turma like :Aluno_Turma");
-            }
+        if (idFiltro != null && !idFiltro.equals("")) {
+            sql.append("and a.id = :id");
         }
 
         Query query = em.createQuery(sql.toString());
-        if (aluno != null) {
-            if (aluno.getId() != null) {
-                query.setParameter("id", aluno.getId());
-            }
-            if (aluno.getNome() != null && !aluno.getNome().equals("")) {
-                query.setParameter("nome", "%" + aluno.getNome());
-            }
-            if (aluno.getNascimento() != null && !aluno.getNascimento().equals("")) {
-                query.setParameter("nascimento", "%" + aluno.getNascimento());
-            }
-            if (aluno.getPcd() != null && !aluno.getPcd().equals("")) {
-                query.setParameter("pcd", "%" + aluno.getPcd());
-            }
-            if (aluno.getTurma() != null && !aluno.getTurma().equals("")) {
-                query.setParameter("turma", "%" + aluno.getTurma());
-            }
+
+        if (idFiltro != null && !idFiltro.equals("")) {
+            query.setParameter("id", Long.parseLong(idFiltro));
         }
+
         return query.getResultList();
 
     }

@@ -1,6 +1,7 @@
 package dominio;
 
 import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
@@ -9,6 +10,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 public abstract class Turma_ {
 
 	public static volatile SingularAttribute<Turma, String> ano;
+	public static volatile ListAttribute<Turma, Aluno> alunos;
 	public static volatile SingularAttribute<Turma, String> nome;
 	public static volatile SingularAttribute<Turma, Long> id;
 	public static volatile SingularAttribute<Turma, String> ensino;

@@ -18,7 +18,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
-import javax.xml.bind.ValidationException;
 import util.ValidacaoException;
 
 /**
@@ -101,13 +100,14 @@ public class Aluno implements Serializable {
     public String toString() {
         return "Aluno{" + "id=" + id + ", nome=" + nome + ", nascimento=" + nascimento + ", pcd=" + pcd + '}';
     }
-    
-    public void validar() throws ValidacaoException{
-        if(this.nome == null || this.nome.equals(""))
+
+    public void validar() throws ValidacaoException {
+        if (this.nome == null || this.nome.equals("")) {
             throw new ValidacaoException("Nome precisa ser Preenchido");
-        if(this.nascimento == null || this.nascimento.equals(""))
-            throw new ValidacaoException("Nome precisa ser Preenchido");
+        }
+        if (this.nascimento == null || this.nascimento.equals("")) {
+            throw new ValidacaoException("Data de nascimento precisa ser Preenchida");
+        }
     }
-    
 
 }
